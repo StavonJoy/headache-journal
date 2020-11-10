@@ -1,3 +1,3 @@
-# react-jwt-template
+# Headache Journal
 
-This is a template for a full-stack MERN application with built in user authentication utilizing JWT.
+This is a full-stack MERN application that I will use to track my headaches.
