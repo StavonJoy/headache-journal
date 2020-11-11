@@ -4,22 +4,45 @@ import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
 import authService from "../../services/authService";
-import Users from "../Users/Users";
+// import Users from "../Users/Users";
 import "./App.css";
+import AddHeadache from '../AddHeadache/AddHeadache';
+import HeadacheList from '../HeadacheList/HeadacheList';
+import * as headacheAPI from "../../services/headaches-api";
+// import * as userService from "../../services/userService";
 
 class App extends Component {
-  state = {
+  constructor() {
+    super();
+    this.state = {
+    headaches: [],
     user: authService.getUser(),
-  };
+    }
+  }
+  
+
+  handleAddHeadache = async newHeadacheData => {
+    const newHeadache = await headacheAPI.create(newHeadacheData);
+    newHeadacheData.owner = {name: this.state.user.name, _id: this.state.user._id}
+    this.setState(state => ({
+      headaches: [...state.headaches, newHeadache]
+    }), () => this.props.history.push('/headaches'));
+  }
 
   handleLogout = () => {
     authService.logout();
     this.setState({ user: null });
+    this.props.history.push("/");
   };
 
   handleSignupOrLogin = () => {
     this.setState({ user: authService.getUser() });
   };
+
+  // async componentDidMount() {
+  //   const headaches = await headacheAPI.getAll();
+  //   this.setState({ headaches })
+  // }
 
   render() {
     const {user} = this.state
@@ -31,7 +54,7 @@ class App extends Component {
           path="/"
           render={() => (
             <main>
-              <h1>Welcome. This is an authorization template.</h1>
+              <h1>Headache Journal</h1>
             </main>
           )}
         />
@@ -55,10 +78,31 @@ class App extends Component {
             />
           )}
         />
-        <Route
-          exact
-          path="/users"
+        {/* <Route
+          exact path="/users"
           render={() => (user ? <Users /> : <Redirect to="/login" />)}
+        /> */}
+        <Route 
+          exact path='/headaches/add' 
+          render={() => 
+            authService.getUser() ?
+          <AddHeadache
+            handleAddHeadache = {this.handleAddHeadache}
+            user={this.state.user}
+          />
+          :
+          <Redirect to='/login' />
+          }
+        />
+        <Route exact path='/headaches'
+          render={() => authService.getUser() ? 
+          <HeadacheList
+            headaches = {this.state.headaches}
+            user={this.state.user}
+          />
+          :
+          <Redirect to='/login' />
+          } 
         />
       </>
     );

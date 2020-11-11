@@ -8,8 +8,10 @@ const NavBar = ({ user, handleLogout }) => {
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
               <li><a href=" " className="nav-link">Welcome, {user.name}</a></li>
-              <li><a href="/users" className="nav-link">Users</a></li>
+              {/* <li><a href="/users" className="nav-link">Users</a></li> */}
               <li><a href=" " className="nav-link" onClick={handleLogout}>Log Out</a></li>
+              <li><a href="/headaches/add" className="nav-link">Add Headache</a></li>
+              <li><a href="/headaches" className="nav-link">My Headaches</a></li>
             </ul>
           </div>
         </nav>
@@ -18,7 +20,7 @@ const NavBar = ({ user, handleLogout }) => {
           <div className="nav-wrapper">
             <ul id="nav-mobile" className="right">
               <li><a href="/login" className="nav-link">Log In</a></li>
-              <li><a href="/users" className="nav-link">Users</a></li>
+              {/* <li><a href="/users" className="nav-link">Users</a></li> */}
               <li><a href="/signup" className="nav-link">Sign Up</a></li>
             </ul>
           </div>

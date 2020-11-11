@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const headacheSchema = mongoose.Schema(
+const headacheSchema = new mongoose.Schema(
   {
     title: {
       type: String,
-      required: true
+      required: true,
+      max: 50
     },
     owner: {
       type: Schema.Types.ObjectId,
@@ -13,17 +14,13 @@ const headacheSchema = mongoose.Schema(
     },
     painLevel: {
       type: Number,
-      required: true
+      required: true,
+      min: 0,
+      max: 10
     },
-    medsUsed: {
-      type: String
-    },
-    length: {
-      type: Number,
-    },
-    description: {
-      type: String
-    },
+    medsUsed: [String],
+    length: Number,
+    description: String,
 },
 {
   timestamps: true,
