@@ -1,0 +1,33 @@
+.card{
+  display: block;
+  width: 80vw;
+  margin: 30px;
+}
+/* 
+.HeadacheList-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+}
+
+@media (max-width: 1500px) {
+.HeadacheList-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  }
+} */
+/* 
+@media (max-width: 1000px) {
+.HeadacheList-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: 10px;
+  justify-items: center;
+  }
+} */

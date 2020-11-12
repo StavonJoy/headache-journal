@@ -9,21 +9,32 @@ import "./App.css";
 import AddHeadache from '../AddHeadache/AddHeadache';
 import HeadacheList from '../HeadacheList/HeadacheList';
 import * as headacheAPI from "../../services/headaches-api";
+// import HeadacheCard from '../../components/HeadacheCard/HeadacheCard'
 // import * as userService from "../../services/userService";
 
 class App extends Component {
-  constructor() {
+  constructor(){
     super();
     this.state = {
-    headaches: [],
-    user: authService.getUser(),
+      user: authService.getUser(),
+      headaches: [],
     }
   }
   
+  handleDeleteHeadache = async id => {
+    if(authService.getUser()){
+      await headacheAPI.deleteOne(id);
+      this.setState(state => ({
+        headaches: state.headaches.filter(h => h._id !== id)
+      }), () => this.props.history.push('/headaches'));
+    } else {
+      this.props.history.push('/login')
+    }
+  }
 
   handleAddHeadache = async newHeadacheData => {
     const newHeadache = await headacheAPI.create(newHeadacheData);
-    newHeadacheData.owner = {name: this.state.user.name, _id: this.state.user._id}
+    newHeadache.owner = {name: this.state.user.name, _id: this.state.user._id}
     this.setState(state => ({
       headaches: [...state.headaches, newHeadache]
     }), () => this.props.history.push('/headaches'));
@@ -39,10 +50,10 @@ class App extends Component {
     this.setState({ user: authService.getUser() });
   };
 
-  // async componentDidMount() {
-  //   const headaches = await headacheAPI.getAll();
-  //   this.setState({ headaches })
-  // }
+  async componentDidMount() {
+    const headaches = await headacheAPI.getAll();
+    this.setState({ headaches })
+  }
 
   render() {
     const {user} = this.state
@@ -99,6 +110,7 @@ class App extends Component {
           <HeadacheList
             headaches = {this.state.headaches}
             user={this.state.user}
+            handleDeleteHeadache={this.handleDeleteHeadache}
           />
           :
           <Redirect to='/login' />
