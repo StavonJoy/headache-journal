@@ -1,0 +1,15 @@
+p {
+  margin: 0;
+}
+.date {
+  right: 0;
+  position: absolute;
+}
+.length {
+  right: 50%;
+  position: absolute;
+}
+.card {
+  background-color: rgba(255, 255, 255, 0.365);
+  display: flex;
+}

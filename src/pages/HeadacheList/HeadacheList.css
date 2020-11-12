@@ -3,6 +3,10 @@
   width: 80vw;
   margin: 30px;
 }
+
+h3 {
+  text-align: center;
+}
 /* 
 .HeadacheList-grid {
   width: 100%;

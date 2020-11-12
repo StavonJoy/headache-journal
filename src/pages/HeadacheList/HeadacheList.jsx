@@ -5,6 +5,7 @@ import './HeadacheList.css';
 const HeadacheList = (props) => {
   return (
     <>
+    <h3>My Headaches</h3>
     {props.headaches? 
        <div className='HeadacheList-grid'>
         {props.headaches.map(headache =>

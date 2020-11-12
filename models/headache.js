@@ -19,7 +19,7 @@ const headacheSchema = new mongoose.Schema(
       max: 10
     },
     medsUsed: [String],
-    length: Number,
+    headacheLength: Number,
     description: String,
 },
 {
