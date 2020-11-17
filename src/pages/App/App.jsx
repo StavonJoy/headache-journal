@@ -64,7 +64,7 @@ class App extends Component {
 
   async componentDidMount() {
     const headaches = await headacheAPI.getAll();
-    this.setState({ headaches })
+    this.setState({ headaches: headaches.reverse() })
   }
 
   render() {

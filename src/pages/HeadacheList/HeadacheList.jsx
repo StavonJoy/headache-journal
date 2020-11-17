@@ -6,7 +6,7 @@ const HeadacheList = (props) => {
   return (
     <>
     <h3>My Headaches</h3>
-    {props.headaches? 
+    {props.headaches.length > 0 ? 
        <div className='HeadacheList-grid'>
         {props.headaches.map(headache =>
           <HeadacheCard
