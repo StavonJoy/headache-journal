@@ -1,5 +1,6 @@
 p {
   margin: 0;
+
 }
 .date {
   top: 0;
@@ -17,6 +18,7 @@ p {
 }
 .card {
   /* background-color: rgba(255, 255, 255, 0.365); */
+  color: rgb(69, 69, 69);
   background-color: rgb(220, 220, 220);
   display: flex;
   margin: 0 auto;

@@ -4,6 +4,14 @@ module.exports = {
   create,
   index,
   delete: deleteOne,
+  update
+}
+
+function update(req, res){
+  Headache.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .populate('owner')
+  .then(headache => {res.json(headache)})
+  .catch(err => {res.json(err)})
 }
 
 function deleteOne(req, res) {

@@ -13,6 +13,7 @@ const HeadacheList = (props) => {
             key={headache._id}
             headache={headache}
             handleDeleteHeadache={props.handleDeleteHeadache}
+            // handleUpdateHeadache={props.handleUpdateHeadache}
             user={props.user}
           />
         )}

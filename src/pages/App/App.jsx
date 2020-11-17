@@ -11,6 +11,7 @@ import HeadacheList from '../HeadacheList/HeadacheList';
 import * as headacheAPI from "../../services/headaches-api";
 // import HeadacheCard from '../../components/HeadacheCard/HeadacheCard'
 // import * as userService from "../../services/userService";
+import EditHeadache from '../../components/EditHeadache/EditHeadache'
 
 class App extends Component {
   constructor(){
@@ -21,6 +22,17 @@ class App extends Component {
     }
   }
   
+  handleUpdateHeadache = async updatedHeadacheData => {
+    const updatedHeadache = await headacheAPI.update(updatedHeadacheData);
+    // console.log('headache ' + updatedHeadache)
+    // console.log(updatedHeadacheData)
+    const newHeadachesArray = this.state.headaches.map(h => h._id === updatedHeadache._id ? updatedHeadache : h );
+    this.setState(
+      {headaches: newHeadachesArray},
+      () => this.props.history.push('/headaches')
+    );
+  }
+
   handleDeleteHeadache = async id => {
     if(authService.getUser()){
       await headacheAPI.deleteOne(id);
@@ -43,7 +55,7 @@ class App extends Component {
   handleLogout = () => {
     authService.logout();
     this.setState({ user: null });
-    this.props.history.push("/login");
+    this.props.history.push("/");
   };
 
   handleSignupOrLogin = () => {
@@ -116,7 +128,19 @@ class App extends Component {
           <Redirect to='/login' />
           } 
         />
-      </>
+        <Route 
+          exact path='/edit' 
+          render={({ location }) => 
+          authService.getUser() ? 
+            <EditHeadache
+              handleUpdateHeadache={this.handleUpdateHeadache}
+              location={location}
+              user={this.state.user}
+            />
+          :
+            <Redirect to='/login'/>
+          }/>
+        </>
     );
   }
 }
