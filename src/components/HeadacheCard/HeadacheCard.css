@@ -7,14 +7,23 @@ p {
   right: 0;
   position: absolute;
 }
-.length {
+.delete {
+  bottom: 0;
   right: 0;
   position: absolute;
 }
-.pain {
+.edit {
+  bottom: .3%;
+  right: 5%;
   position: absolute;
-  right: 50%;
-  /* top: 0; */
+  margin-right: 15px;
+}
+.btn {
+  padding: 0;
+  margin: 0;
+}
+.bold {
+  font-weight: 600;
 }
 .card {
   /* background-color: rgba(255, 255, 255, 0.365); */
@@ -23,4 +32,7 @@ p {
   display: flex;
   margin: 0 auto;
   box-shadow: 3px 3px 7px rgba(12, 12, 12, 0.568);
+}
+.desc {
+  margin-bottom: 15px;
 }

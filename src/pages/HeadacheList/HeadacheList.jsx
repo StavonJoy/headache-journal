@@ -19,7 +19,7 @@ const HeadacheList = (props) => {
         )}
       </div>   
     :
-    <div>
+    <div className="none">
       <p>No headaches yet</p>
     </div>
     }

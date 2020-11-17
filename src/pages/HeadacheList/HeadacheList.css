@@ -1,5 +1,5 @@
 .card{
-  display: block;
+  /* display: block; */
   width: 80vw;
   margin: 30px;
   max-width: 600px;
@@ -13,7 +13,12 @@ h3 {
 body {
   align-content: center;
 }
-/* 
+.none {
+ text-align: center;
+ color: white;
+ margin-top: 100px;
+}
+
 .HeadacheList-grid {
   width: 100%;
   display: grid;
@@ -39,4 +44,4 @@ body {
   grid-gap: 10px;
   justify-items: center;
   }
-} */
+}
