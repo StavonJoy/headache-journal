@@ -8,7 +8,7 @@ const HeadacheList = (props) => {
     <h3>My Headaches</h3>
     {props.headaches.length > 0 ? 
        <div className='HeadacheList-grid'>
-        {props.headaches.map(headache =>
+        {props.headaches.reverse().map(headache =>
           <HeadacheCard
             key={headache._id}
             headache={headache}
