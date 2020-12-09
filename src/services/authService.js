@@ -3,9 +3,10 @@ import tokenService from "./tokenService";
 const BASE_URL = '/api/auth/';
 
 function signup(user) {
-  return fetch(BASE_URL + 'signup', {
-    method: 'POST',
-    headers: new Headers({'Content-Type': 'application/json'}),
+  return fetch(BASE_URL + "signup", {
+    method: "POST",
+    headers: new Headers({"Content-Type": "application/json", 
+    "Accept": "application/json"}),
     body: JSON.stringify(user)
   })
   .then(res => {
@@ -33,7 +34,8 @@ function logout() {
 function login(creds) {
   return fetch(BASE_URL + "login", {
     method: "POST",
-    headers: new Headers({ "Content-Type": "application/json" }),
+    headers: new Headers({ "Content-Type": "application/json",
+    "Accept": "application/json" }),
     body: JSON.stringify(creds),
   })
   .then((res) => {
