@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AddHeadache.css'
 
 
 class AddHeadache extends Component {

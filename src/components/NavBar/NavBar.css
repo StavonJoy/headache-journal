@@ -2,6 +2,7 @@ nav {
   background-color: rgb(220, 220, 220);
   text-decoration: none;
   box-shadow: 3px 3px 7px rgba(12, 12, 12, 0.568);
+  height: 40px;
 }
 a {
   color: rgb(69, 69, 69);
@@ -11,4 +12,7 @@ a {
   position: absolute;
   right:  0;
   display: inline-flex;
+}
+.nav-link {
+  display: inline;
 }

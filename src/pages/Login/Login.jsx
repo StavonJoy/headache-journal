@@ -40,19 +40,23 @@ class LoginPage extends Component {
             autoComplete="off"
             id="email"
             value={email}
+            placeHolder="Email"
             name="email"
             onChange={this.handleChange}
           />
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email"></label>
+          <br></br>
           <input
             type="password"
             autoComplete="off"
             id="password"
+            placeHolder="Password"
             value={pw}
             name="pw"
             onChange={this.handleChange}
           />
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password"></label>
+          <br></br>
           <button className="btn green">Log In</button>&nbsp;&nbsp;&nbsp;
           <Link className="btn red" to="/">
             Cancel

@@ -1,0 +1,15 @@
+.AddHeadache {
+  text-align: center;
+  padding: 20px;
+  margin: 20px;
+  color: white;
+}
+
+label {
+  position: absolute;
+  left: 0;
+}
+
+#description {
+  width: 200px;
+}

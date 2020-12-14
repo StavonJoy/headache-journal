@@ -78,6 +78,7 @@ class App extends Component {
           render={() => (
             <main>
               <h1>Headache Journal</h1>
+              <p>A place to keep track of your headaches and migraines. You can use this to help learn about your patterns and find potential triggers.</p>
             </main>
           )}
         />
