@@ -66,65 +66,86 @@ class ForgotPasswordPage extends Component {
     const { email, message, error, showResetForm, newPassword, confirmPassword } = this.state;
     
     return (
-      <main className="ForgotPassword">
-        <h3>Reset Password</h3>
-        
-        {!showResetForm ? (
-          <form autoComplete="off" onSubmit={this.handleForgotPassword}>
-            <p>Enter your email address to receive a password reset token:</p>
-            <input
-              type="email"
-              autoComplete="off"
-              id="email"
-              value={email}
-              placeholder="Email"
-              name="email"
-              onChange={this.handleChange}
-              required
-            />
-            <label htmlFor="email"></label>
-            <br />
-            <button className="btn green">Send Reset Token</button>&nbsp;&nbsp;&nbsp;
-            <Link className="btn red" to="/login">
-              Back to Login
-            </Link>
-          </form>
-        ) : (
-          <form autoComplete="off" onSubmit={this.handleResetPassword}>
-            <p>Enter your new password:</p>
-            <input
-              type="password"
-              autoComplete="off"
-              id="newPassword"
-              value={newPassword}
-              placeholder="New Password"
-              name="newPassword"
-              onChange={this.handleChange}
-              required
-            />
-            <label htmlFor="newPassword"></label>
-            <br />
-            <input
-              type="password"
-              autoComplete="off"
-              id="confirmPassword"
-              value={confirmPassword}
-              placeholder="Confirm New Password"
-              name="confirmPassword"
-              onChange={this.handleChange}
-              required
-            />
-            <label htmlFor="confirmPassword"></label>
-            <br />
-            <button className="btn green">Reset Password</button>&nbsp;&nbsp;&nbsp;
-            <Link className="btn red" to="/login">
-              Back to Login
-            </Link>
-          </form>
-        )}
-        
-        {message && <p className="success-message">{message}</p>}
-        {error && <p className="error-message">{error}</p>}
+      <main className="page-container">
+        <div className="form-container">
+          <h3 className="text-center mb-6">Reset Your Password</h3>
+          
+          {!showResetForm ? (
+            <form autoComplete="off" onSubmit={this.handleForgotPassword}>
+              <p className="text-center mb-4" style={{color: '#6b7280'}}>
+                Enter your email address and we'll send you a reset token
+              </p>
+              
+              <div className="form-group">
+                <label htmlFor="email" className="form-label">Email Address</label>
+                <input
+                  type="email"
+                  autoComplete="off"
+                  id="email"
+                  value={email}
+                  placeholder="Enter your email"
+                  name="email"
+                  className="form-input"
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              
+              <div className="flex flex-col gap-4">
+                <button className="btn btn-primary">Send Reset Token</button>
+                <Link className="btn btn-link text-center" to="/login">
+                  Back to Login
+                </Link>
+              </div>
+            </form>
+          ) : (
+            <form autoComplete="off" onSubmit={this.handleResetPassword}>
+              <p className="text-center mb-4" style={{color: '#6b7280'}}>
+                Create your new password below
+              </p>
+              
+              <div className="form-group">
+                <label htmlFor="newPassword" className="form-label">New Password</label>
+                <input
+                  type="password"
+                  autoComplete="off"
+                  id="newPassword"
+                  value={newPassword}
+                  placeholder="Enter new password"
+                  name="newPassword"
+                  className="form-input"
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="confirmPassword" className="form-label">Confirm New Password</label>
+                <input
+                  type="password"
+                  autoComplete="off"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  placeholder="Confirm new password"
+                  name="confirmPassword"
+                  className="form-input"
+                  onChange={this.handleChange}
+                  required
+                />
+              </div>
+              
+              <div className="flex flex-col gap-4">
+                <button className="btn btn-primary">Reset Password</button>
+                <Link className="btn btn-link text-center" to="/login">
+                  Back to Login
+                </Link>
+              </div>
+            </form>
+          )}
+          
+          {message && <div className="message message-success">{message}</div>}
+          {error && <div className="message message-error">{error}</div>}
+        </div>
       </main>
     );
   }

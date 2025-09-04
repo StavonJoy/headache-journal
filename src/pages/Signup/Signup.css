@@ -1,7 +1,2 @@
-.Signup {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 50px;
-}
+/* Signup page styles are now handled by global styles in index.css */
+/* This file can be removed or kept for any page-specific overrides */

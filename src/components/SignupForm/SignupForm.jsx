@@ -38,48 +38,76 @@ class SignupForm extends Component {
   render() {
     const { name, email, password, passwordConf } = this.state;
     return (
-      <div>
-        <h3>Sign Up</h3>
+      <div className="form-container">
+        <h3 className="text-center mb-6">Create Your Account</h3>
         <form autoComplete="off" onSubmit={this.handleSubmit}>
-          <input
-            type="text"
-            autoComplete="off"
-            id="name"
-            value={name}
-            name="name"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            autoComplete="off"
-            id="email"
-            value={email}
-            name="email"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="password"
-            value={password}
-            name="password"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            autoComplete="off"
-            id="confirm"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={this.handleChange}
-          />
-          <label htmlFor="confirm">Confirm Password</label>
-          <button disabled={this.isFormInvalid()}>Sign Up</button>
-          &nbsp;&nbsp;
-          <Link to="/">Cancel</Link>
+          <div className="form-group">
+            <label htmlFor="name" className="form-label">Full Name</label>
+            <input
+              type="text"
+              autoComplete="off"
+              id="name"
+              value={name}
+              name="name"
+              placeholder="Enter your full name"
+              className="form-input"
+              onChange={this.handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="email" className="form-label">Email Address</label>
+            <input
+              type="email"
+              autoComplete="off"
+              id="email"
+              value={email}
+              name="email"
+              placeholder="Enter your email"
+              className="form-input"
+              onChange={this.handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              autoComplete="off"
+              id="password"
+              value={password}
+              name="password"
+              placeholder="Create a password"
+              className="form-input"
+              onChange={this.handleChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label htmlFor="confirm" className="form-label">Confirm Password</label>
+            <input
+              type="password"
+              autoComplete="off"
+              id="confirm"
+              value={passwordConf}
+              name="passwordConf"
+              placeholder="Confirm your password"
+              className="form-input"
+              onChange={this.handleChange}
+            />
+          </div>
+          
+          <div className="flex flex-col gap-4">
+            <button 
+              className="btn btn-primary" 
+              disabled={this.isFormInvalid()}
+            >
+              Create Account
+            </button>
+            <Link to="/" className="btn btn-link text-center">
+              Already have an account? Sign in
+            </Link>
+          </div>
         </form>
       </div>
     );
