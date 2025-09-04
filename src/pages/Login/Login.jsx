@@ -61,6 +61,10 @@ class LoginPage extends Component {
           <Link className="btn red" to="/">
             Cancel
           </Link>
+          <br /><br />
+          <Link to="/forgot-password" style={{ textAlign: 'center', display: 'block' }}>
+            Forgot Password?
+          </Link>
         </form>
       </main>
     );

@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  # MongoDB Database
+  mongodb:
+    image: mongo:5.0
+    container_name: headache-journal-db
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: headache_journal
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - headache-network
+
+  # Backend Application
+  app:
+    build: .
+    container_name: headache-journal-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=mongodb://admin:password123@mongodb:27017/headache_journal?authSource=admin
+      - SECRET=thissucks1389
+      - PORT=3001
+    depends_on:
+      - mongodb
+    networks:
+      - headache-network
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+volumes:
+  mongodb_data:
+
+networks:
+  headache-network:
+    driver: bridge

@@ -8,6 +8,8 @@ const userSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
   headaches: { type: mongoose.Schema.Types.ObjectId, ref: 'Headache'},
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 }, {
   timestamps: true
 });

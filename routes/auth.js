@@ -5,6 +5,8 @@ const authCtrl = require('../controllers/auth');
 /*---------- Public Routes ----------*/
 router.post('/signup', authCtrl.signup);
 router.post("/login", authCtrl.login);
+router.post("/forgot-password", authCtrl.forgotPassword);
+router.post("/reset-password", authCtrl.resetPassword);
 
 /*---------- Protected Routes ----------*/
 router.use(require('../config/auth'));

@@ -46,9 +46,38 @@ function login(creds) {
   .then(({ token }) => tokenService.setToken(token));
 }
 
+function forgotPassword(email) {
+  return fetch(BASE_URL + "forgot-password", {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ email }),
+  })
+  .then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Error sending password reset request");
+  });
+}
+
+function resetPassword(token, newPassword) {
+  return fetch(BASE_URL + "reset-password", {
+    method: "POST",
+    headers: new Headers({ "Content-Type": "application/json" }),
+    body: JSON.stringify({ token, newPassword }),
+  })
+  .then((res) => {
+    if (res.ok) return res.json();
+    throw new Error("Error resetting password");
+  })
+  .then(({ token }) => {
+    if (token) tokenService.setToken(token);
+  });
+}
+
 export default {
   signup,
   getUser,
   logout,
   login,
+  forgotPassword,
+  resetPassword,
 };

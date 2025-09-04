@@ -3,6 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import Signup from "../Signup/Signup";
 import Login from "../Login/Login";
+import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import authService from "../../services/authService";
 // import Users from "../Users/Users";
 import "./App.css";
@@ -99,6 +100,15 @@ class App extends Component {
             <Login
               history={history}
               handleSignupOrLogin={this.handleSignupOrLogin}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/forgot-password"
+          render={({ history }) => (
+            <ForgotPassword
+              history={history}
             />
           )}
         />
