@@ -73,7 +73,7 @@ function resetPassword(token, newPassword) {
   });
 }
 
-export default {
+const authService = {
   signup,
   getUser,
   logout,
@@ -81,3 +81,5 @@ export default {
   forgotPassword,
   resetPassword,
 };
+
+export default authService;
